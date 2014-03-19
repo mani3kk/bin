@@ -47,6 +47,6 @@ sudo rm -rf /usr/local/nagios/etc/nagios.cfg
 sudo cp /vagrant/nagios.cfg /usr/local/nagios/etc/
 sudo cp /vagrant/hosts.cfg /usr/local/nagios/etc/
 sudo cp /vagrant/hostgroups.cfg /usr/local/nagios/etc/objects/
-sudo cp /vagrant/htpasswd.users /usr/local/nagios/etc/
+sudo echo "nagiosadmin:$apr1$tTcdT66l$W7Q8mTQWjzKmQHr25wChO/" > /usr/local/nagios/etc/htpasswd.users
 sudo service nagios start
-sudo service apache2 start
+sudo service apache2 restart
