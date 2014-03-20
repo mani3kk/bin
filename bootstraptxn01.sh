@@ -51,3 +51,4 @@ sudo rm -rf /usr/local/nagios/etc/htpasswd.users
 sudo cp /vagrant/htpasswd.users /usr/local/nagios/etc/
 sudo service nagios start
 sudo service apache2 restart
+sudo service nagios restart 

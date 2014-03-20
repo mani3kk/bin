@@ -1,0 +1,32 @@
+upstream nagios  {
+  ip_hash;
+  server 192.168.10.7:80;
+  }
+
+upstream php  {
+  server 192.168.10.2:80;
+  server 192.168.10.3:80;
+  }
+
+server {
+      listen 80;
+ 
+      location /nagios {
+        proxy_pass http://nagios;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+      location / {
+        proxy_pass http://php; 
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+}
